@@ -1,0 +1,67 @@
+
+Call:
+glm(formula = Area ~ YearsSinceBurn * Compound, data = longmeta)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-15.5340   -0.6968   -0.1333    0.4338   24.6240  
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                               0.546972   1.994496   0.274  0.78406    
+YearsSinceBurn                           -0.022323   0.145737  -0.153  0.87835    
+Compoundalpha-cedrene                     7.881098   2.820643   2.794  0.00550 ** 
+Compoundalpha-chamigrene                 -0.097195   2.820643  -0.034  0.97253    
+Compoundalpha-eudesmol                    0.361341   2.820643   0.128  0.89814    
+Compoundalpha-himachalene                -0.240541   2.820643  -0.085  0.93209    
+Compoundalpha-pinene                      0.049025   2.820643   0.017  0.98614    
+Compoundalpha-terpineol                   0.445621   2.820643   0.158  0.87456    
+Compoundbeta-acorenol                     0.829371   2.820643   0.294  0.76891    
+Compoundbeta-cedrene                      2.118457   2.820643   0.751  0.45313    
+Compoundbeta-chamigrene                   0.366045   2.820643   0.130  0.89682    
+Compoundbeta-eudesmol                     1.428395   2.820643   0.506  0.61289    
+Compoundcedr-8-en-13-ol                   7.619740   2.820643   2.701  0.00725 ** 
+Compoundcedr-8-en-15-ol                   1.710281   2.820643   0.606  0.54469    
+Compoundcedr-9-ene                        0.125488   2.820643   0.044  0.96454    
+Compoundcedrol                           22.548238   2.820643   7.994 1.99e-14 ***
+Compoundcis-thujopsene                   17.277800   2.820643   6.125 2.46e-09 ***
+Compoundcompound 1                        1.726651   2.820643   0.612  0.54084    
+Compoundcompound 2                        0.115275   2.820643   0.041  0.96742    
+Compoundcuparene                          0.987034   2.820643   0.350  0.72660    
+Compoundgamma-eudesmol                    0.983322   2.820643   0.349  0.72759    
+Compoundpara-cymene                      -0.330568   2.820643  -0.117  0.90677    
+Compoundthujopsenal                       1.616918   2.820643   0.573  0.56685    
+Compoundwiddrol                           5.815874   2.820643   2.062  0.03997 *  
+YearsSinceBurn:Compoundalpha-cedrene      0.226317   0.206104   1.098  0.27294    
+YearsSinceBurn:Compoundalpha-chamigrene   0.037633   0.206104   0.183  0.85523    
+YearsSinceBurn:Compoundalpha-eudesmol     0.019210   0.206104   0.093  0.92580    
+YearsSinceBurn:Compoundalpha-himachalene  0.025676   0.206104   0.125  0.90093    
+YearsSinceBurn:Compoundalpha-pinene      -0.002104   0.206104  -0.010  0.99186    
+YearsSinceBurn:Compoundalpha-terpineol    0.041866   0.206104   0.203  0.83915    
+YearsSinceBurn:Compoundbeta-acorenol     -0.043200   0.206104  -0.210  0.83410    
+YearsSinceBurn:Compoundbeta-cedrene       0.054302   0.206104   0.263  0.79235    
+YearsSinceBurn:Compoundbeta-chamigrene    0.028045   0.206104   0.136  0.89184    
+YearsSinceBurn:Compoundbeta-eudesmol      0.029696   0.206104   0.144  0.88552    
+YearsSinceBurn:Compoundcedr-8-en-13-ol   -0.170561   0.206104  -0.828  0.40850    
+YearsSinceBurn:Compoundcedr-8-en-15-ol   -0.021237   0.206104  -0.103  0.91799    
+YearsSinceBurn:Compoundcedr-9-ene         0.026052   0.206104   0.126  0.89949    
+YearsSinceBurn:Compoundcedrol            -0.224855   0.206104  -1.091  0.27604    
+YearsSinceBurn:Compoundcis-thujopsene     0.331832   0.206104   1.610  0.10831    
+YearsSinceBurn:Compoundcompound 1         0.007509   0.206104   0.036  0.97096    
+YearsSinceBurn:Compoundcompound 2         0.057963   0.206104   0.281  0.77870    
+YearsSinceBurn:Compoundcuparene           0.077284   0.206104   0.375  0.70791    
+YearsSinceBurn:Compoundgamma-eudesmol     0.023221   0.206104   0.113  0.91036    
+YearsSinceBurn:Compoundpara-cymene        0.056406   0.206104   0.274  0.78450    
+YearsSinceBurn:Compoundthujopsenal        0.014138   0.206104   0.069  0.94535    
+YearsSinceBurn:Compoundwiddrol            0.026360   0.206104   0.128  0.89831    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 14.60771)
+
+    Null deviance: 18325.8  on 390  degrees of freedom
+Residual deviance:  5039.7  on 345  degrees of freedom
+AIC: 2203.2
+
+Number of Fisher Scoring iterations: 2
+
