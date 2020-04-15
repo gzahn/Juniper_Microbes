@@ -122,7 +122,7 @@ insect2 <- ggplot(meta,aes(x=YearsSinceBurn,y=Raw_Exit_Holes_per_cm2)) + geom_po
         axis.text = element_text(size=12,face="bold"))
 
 insect1 / insect2
-ggsave("./output/figs/Fig4_Insect_bore-holes_over_Time.png",dpi=300,height = 4,width = 6)
+ggsave("./output/figs/Fig4_Insect_bore-holes_over_Time.png",dpi=300,height = 6,width = 6)
 
 
 # Models ####
