@@ -26,8 +26,15 @@ bact_ra <- transform_sample_counts(bact, function(x) x/sum(x))
 
 # quick barplots ####
 p1 <- plot_bar2(fung_ra,fill="Phylum") + scale_fill_manual(values = pal.discrete)
+p1
+ggsave("./output/figs/Fig9_fungal_phyla_by_sample.png",dpi=300)
+
 p2 <- plot_bar2(fung_ra,fill="Class") + scale_fill_manual(values = pal.discrete)
+p2
+ggsave("./output/figs/Fig10_fungal_class_by_sample.png",dpi=300)
+
 p3 <- plot_bar2(fung_ra,fill="Order") + scale_fill_manual(values = pal.continuous[round(seq(from=1,to=180,length.out = 41))])
+
 
 ggplotly(p3)
 
