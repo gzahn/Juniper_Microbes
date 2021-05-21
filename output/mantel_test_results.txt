@@ -1,0 +1,22 @@
+Monte-Carlo test
+Call: mantelnoneuclid(m1 = m1, m2 = m2, nrepet = nrepet)
+
+Observation: -0.05497005 
+
+Based on 9999 replicates
+Simulated p-value: 0.605 
+Alternative hypothesis: greater 
+
+     Std.Obs  Expectation     Variance 
+-0.373630148 -0.002876667  0.019439329 
+Monte-Carlo test
+Call: mantel.rtest(m1 = bact_spatial.dist, m2 = bact_comm.dist, nrepet = 9999)
+
+Observation: 0.2292913 
+
+Based on 9999 replicates
+Simulated p-value: 0.0734 
+Alternative hypothesis: greater 
+
+     Std.Obs  Expectation     Variance 
+ 1.457703848 -0.000044748  0.024751759 

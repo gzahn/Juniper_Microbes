@@ -1,0 +1,27 @@
+
+Call:
+glm(formula = shannon ~ beta_acorenol * alpha_acorenol + years_since_burn, 
+    data = .)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.81403  -0.16482   0.04994   0.27268   0.60094  
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                   2.41091    0.31988   7.537 6.88e-06 ***
+beta_acorenol                 0.49231    0.37257   1.321   0.2110    
+alpha_acorenol                0.72833    0.54515   1.336   0.2063    
+years_since_burn             -0.02468    0.02055  -1.201   0.2529    
+beta_acorenol:alpha_acorenol -1.05723    0.38247  -2.764   0.0171 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 0.2262)
+
+    Null deviance: 5.2173  on 16  degrees of freedom
+Residual deviance: 2.7144  on 12  degrees of freedom
+AIC: 29.055
+
+Number of Fisher Scoring iterations: 2
+
