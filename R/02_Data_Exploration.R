@@ -20,7 +20,8 @@ source("./R/plot_bar2.R")
 fung <- readRDS("./output/juniper_phyloseq_object_clean_ITS2.RDS")
 bact <- readRDS("./output/juniper_phyloseq_object_clean_16S.RDS") # may need to go back and build a phylogeny?
 meta <- read_csv("./metadata/cleaned_metadata.csv")
-
+bact
+fung
 # chemical compound names
 compound_names <- c("alpha.pinene","para.cymene","alpha.terpineol","cedr.9.ene","alpha.cedrene","beta.cedrene",
                     "cis.thujopsene","alpha.himachalene","beta.chamigrene","cuparene","compound.1","alpha.chamigrene",
@@ -52,6 +53,28 @@ p1
 ggsave("./output/figs/Fig_Kingdom_by_sample.png",dpi=300)
 
 
+p2 <- plot_bar2(fung_ra,fill="Phylum") + scale_fill_manual(values = pal.discrete) + labs(y="Relative abundance",title = "Fungi") + theme(panel.background = element_blank())
+p3 <- plot_bar2(bact_ra,fill="Phylum") + scale_fill_manual(values = pal.discrete) + labs(y="Relative abundance",title = "Bacteria")+ theme(panel.background = element_blank())
+
+p2 / p3
+ggsave("./output/figs/phylum_barplot.png",height = 8,width = 6)
+
+
+sampleid <- sample_data(full)$Sample.Name. %>% str_split("-") %>% map_chr(3)
+
+fullmerged <- merge_samples(full,sampleid)
+
+fullmerged %>% sample_data()
+fullmerged %>% 
+  transform_sample_counts(function(x){x/sum(x)}) %>% 
+  plot_bar2(fill="Phylum") + 
+  scale_fill_manual(values = pal.discrete[2:3],labels=c("Bacteria","Fungi")) + 
+  labs(y="Relative abundance",caption="Fig A") + 
+  theme(panel.background = element_blank()) 
+ggsave("./output/figs/bacteria_vs_fungi_barplot.png")
+  
+  
+plot_bar2(full_ra,fill="Phylum") + scale_fill_manual(values = pal.discrete) + labs(y="Relative abundance") + theme(panel.background = element_blank())
 
 # estimate alpha diversity ####
 fung_ra@sam_data$richness <- estimate_richness(fung)$Observed
@@ -67,11 +90,12 @@ sample_data(fung_ra) %>% names
 fung_PCoA <- ordinate(fung_ra,method="PCoA",na.rm = TRUE)
 bact_PCoA <- ordinate(bact_ra,method="PCoA",na.rm = TRUE)
 
+fung_ra %>% sample_data()
 # plot ordinations
 p2 <- plot_ordination(fung_ra, fung_PCoA,color="YearsSinceBurn",title = "Fungi") +
-  theme_classic()
+  theme_classic() + theme(legend.position = "none")
 p3 <- plot_ordination(bact_ra, bact_PCoA,color="YearsSinceBurn",title="Bacteria") +
-  theme_classic()
+  theme_classic() + labs(color="Years since\nburn")
 p2 + p3
 
 
@@ -145,6 +169,8 @@ sample_data(bact_ra) %>%
   summary()
 
 
+  
+
 # sig compound model
 fung_meta <- sample_data(fung_ra) %>% 
   meta() 
@@ -161,6 +187,16 @@ fung_meta %>%
   summary()
 sink(NULL)
 
+fung_meta %>% 
+  glm(formula = shannon ~ beta_acorenol * alpha_acorenol + years_since_burn,
+      data = .) %>% summary()
+  report::report(.)
+
+bact_meta %>% 
+  glm(formula = shannon ~ beta_acorenol * alpha_acorenol + years_since_burn,
+      data = .) %>% summary()
+  report::report(.)
+
 
 fung_meta %>% 
   ggplot(aes(x=alpha_acorenol,y=beta_acorenol,color=shannon)) + 
@@ -171,6 +207,20 @@ fung_meta %>%
   theme(axis.title = element_text(face="bold",size=12))
 ggsave("./output/figs/fungal_diversity_alpha-beta-acorenal.png",dpi=300)
 
+
+
+fung_meta %>% 
+  select(shannon,alpha_acorenol,beta_acorenol) %>% 
+  mutate(total_acorenal=alpha_acorenol+beta_acorenol) %>% 
+  ggplot(aes(x=total_acorenal,y=shannon)) + 
+  geom_point() + geom_smooth(method='lm')
+  theme_classic() +
+  scale_color_viridis_c() +
+  labs(color="Shannon\ndiversity") +
+  theme(axis.title = element_text(face="bold",size=12))
+
+
+# what compounds important
 
 
 # permanova ####
@@ -205,6 +255,14 @@ fung_compound_dist <- fung_meta %>%
 bact_compound_dist <- bact_meta %>% 
   select(compound_names) %>% 
   vegdist()
+
+
+# what compounds important?
+fung_meta %>% 
+  pivot_longer(compound_names,names_to="compound") %>% 
+  glm(data = .,
+      formula = shannon ~ compound * value) %>% 
+  summary()
 
 
 

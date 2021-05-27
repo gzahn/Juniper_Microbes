@@ -1,15 +1,18 @@
-Permutation test for adonis under reduced model
-Terms added sequentially (first to last)
+
+Call:
+adonis(formula = fung_asv ~ fung_meta$years_since_burn + fung_meta$alpha_acorenol *      fung_meta$beta_acorenol) 
+
 Permutation: free
 Number of permutations: 999
 
-adonis(formula = fung_asv ~ fung_meta$years_since_burn + fung_meta$alpha_acorenol * fung_meta$beta_acorenol)
-                                                 Df SumOfSqs      R2      F Pr(>F)  
-fung_meta$years_since_burn                        1   0.5645 0.09791 1.7286  0.060 .
-fung_meta$alpha_acorenol                          1   0.3378 0.05860 1.0345  0.373  
-fung_meta$beta_acorenol                           1   0.4762 0.08259 1.4581  0.130  
-fung_meta$alpha_acorenol:fung_meta$beta_acorenol  1   0.4680 0.08118 1.4331  0.144  
-Residual                                         12   3.9188 0.67972                
-Total                                            16   5.7653 1.00000                
+Terms added sequentially (first to last)
+
+                                                 Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)  
+fung_meta$years_since_burn                        1    0.5645 0.56450  1.7286 0.09791  0.060 .
+fung_meta$alpha_acorenol                          1    0.3378 0.33784  1.0345 0.05860  0.400  
+fung_meta$beta_acorenol                           1    0.4762 0.47617  1.4581 0.08259  0.126  
+fung_meta$alpha_acorenol:fung_meta$beta_acorenol  1    0.4680 0.46801  1.4331 0.08118  0.146  
+Residuals                                        12    3.9188 0.32657         0.67972         
+Total                                            16    5.7653                 1.00000         
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
